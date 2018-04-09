@@ -1,6 +1,7 @@
 package ru.astronarh.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "crossword")
@@ -27,6 +28,10 @@ public class Crossword {
     @Basic
     @Column(name = "idend")
     private int idEnd;
+
+    @Basic
+    @Column(name = "created_on")
+    private Timestamp createdOn;
 
     public Crossword(int rows, int columns, int idBegin, int idEnd) {
         this.rows = rows;
@@ -78,6 +83,14 @@ public class Crossword {
         this.idEnd = idEnd;
     }
 
+    public Timestamp getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
+    }
+
     @Override
     public String toString() {
         return "Crossword{" +
@@ -86,6 +99,7 @@ public class Crossword {
                 ", columns=" + columns +
                 ", idBegin=" + idBegin +
                 ", idEnd=" + idEnd +
+                ", createdOn=" + createdOn +
                 '}';
     }
 }

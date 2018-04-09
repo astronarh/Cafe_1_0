@@ -1,7 +1,0 @@
-DROP TABLE IF EXISTS cell;
-CREATE TABLE cell (
-  id SERIAL,
-  letter TEXT,
-  arrow INT,
-  question TEXT
-);

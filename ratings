@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS ratings;
+CREATE TABLE ratings (
+  id SERIAL,
+  user_id INT,
+  restaurant_id INT,
+  rating INT,
+  date timestamp default current_timestamp
+);

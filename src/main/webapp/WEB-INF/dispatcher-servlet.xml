@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
-             xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
              xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- Maximum Upload Size (In Bytes) -->
+        <beans:property name="maxUploadSize" value="20971520" />
+        <!-- Maximum Size Of The File In Memory (In Bytes) -->
+        <beans:property name="maxInMemorySize" value="1048576" />
+    </beans:bean>
 
     <annotation-driven />
 
@@ -18,9 +27,9 @@
 
     <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <beans:property name="driverClassName" value="org.postgresql.Driver" />
-        <beans:property name="url" value="jdbc:postgresql://ec2-54-217-245-66.eu-west-1.compute.amazonaws.com:5432/dtndj0m9cgdgk?sslmode=require" />
-        <beans:property name="username" value="okiggjyallqouo" />
-        <beans:property name="password" value="d06f0a1987ce28618b0a6a09f69785a14a54859c646acec26da186fd1e3bfe08" />
+        <beans:property name="url" value="jdbc:postgresql://localhost:5433/cafe" />
+        <beans:property name="username" value="user" />
+        <beans:property name="password" value="31053105" />
     </beans:bean>
 
     <!-- Hibernate 4 SessionFactory Bean definition -->
@@ -32,6 +41,8 @@
                 <beans:value>ru.astronarh.model.Crossword</beans:value>
                 <beans:value>ru.astronarh.model.User</beans:value>
                 <beans:value>ru.astronarh.model.UserRoles</beans:value>
+                <beans:value>ru.astronarh.model.Restaurant</beans:value>
+                <beans:value>ru.astronarh.model.Rating</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">

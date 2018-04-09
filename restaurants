@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS restaurants;
+CREATE TABLE restaurants (
+  id SERIAL,
+  name TEXT,
+  site TEXT,
+  description TEXT,
+  foto TEXT,
+  enabled INT NOT NULL DEFAULT 1
+);

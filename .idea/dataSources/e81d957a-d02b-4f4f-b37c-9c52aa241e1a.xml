@@ -10,32 +10,37 @@
     <database id="3" parent="1" name="postgres">
       <ObjectId>12938</ObjectId>
     </database>
-    <role id="4" parent="1" name="pg_monitor">
+    <database id="4" parent="1" name="cafe">
+      <ObjectId>16592</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <role id="5" parent="1" name="pg_monitor">
       <ObjectId>3373</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="5" parent="1" name="pg_read_all_settings">
+    <role id="6" parent="1" name="pg_read_all_settings">
       <ObjectId>3374</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="6" parent="1" name="pg_read_all_stats">
+    <role id="7" parent="1" name="pg_read_all_stats">
       <ObjectId>3375</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="7" parent="1" name="pg_signal_backend">
+    <role id="8" parent="1" name="pg_signal_backend">
       <ObjectId>4200</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="8" parent="1" name="pg_stat_scan_tables">
+    <role id="9" parent="1" name="pg_stat_scan_tables">
       <ObjectId>3377</ObjectId>
       <Inherit>1</Inherit>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="9" parent="1" name="postgres">
+    <role id="10" parent="1" name="postgres">
       <ObjectId>10</ObjectId>
       <SuperRole>1</SuperRole>
       <Inherit>1</Inherit>
@@ -46,7 +51,7 @@
       <ConnectionLimit>-1</ConnectionLimit>
       <BypassRls>1</BypassRls>
     </role>
-    <role id="10" parent="1" name="user">
+    <role id="11" parent="1" name="user">
       <ObjectId>16401</ObjectId>
       <SuperRole>1</SuperRole>
       <Inherit>1</Inherit>
@@ -56,37 +61,59 @@
       <Replication>1</Replication>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <schema id="11" parent="2" name="public">
+    <schema id="12" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-03-19.17:50:44.226</IntrospectionTimestamp>
-      <IntrospectionStateNumber>3950</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-03-30.17:14:43.680</IntrospectionTimestamp>
+      <IntrospectionStateNumber>3983</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <schema id="12" parent="2" name="pg_catalog">
+    <schema id="13" parent="2" name="pg_catalog">
       <ObjectId>11</ObjectId>
     </schema>
-    <schema id="13" parent="2" name="pg_toast">
+    <schema id="14" parent="2" name="pg_toast">
       <ObjectId>99</ObjectId>
     </schema>
-    <schema id="14" parent="2" name="pg_temp_1">
+    <schema id="15" parent="2" name="pg_temp_1">
       <ObjectId>11736</ObjectId>
     </schema>
-    <schema id="15" parent="2" name="pg_toast_temp_1">
+    <schema id="16" parent="2" name="pg_toast_temp_1">
       <ObjectId>11737</ObjectId>
     </schema>
-    <schema id="16" parent="2" name="information_schema">
+    <schema id="17" parent="2" name="information_schema">
       <ObjectId>12648</ObjectId>
     </schema>
-    <sequence id="17" parent="11" name="users_id_seq">
-      <ObjectId>16576</ObjectId>
-      <StateNumber>3950</StateNumber>
+    <schema id="18" parent="4" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2018-04-09.10:34:41.491</IntrospectionTimestamp>
+      <IntrospectionStateNumber>4071</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="19" parent="4" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="20" parent="4" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="21" parent="4" name="pg_temp_1">
+      <ObjectId>11736</ObjectId>
+    </schema>
+    <schema id="22" parent="4" name="pg_toast_temp_1">
+      <ObjectId>11737</ObjectId>
+    </schema>
+    <schema id="23" parent="4" name="information_schema">
+      <ObjectId>12648</ObjectId>
+    </schema>
+    <sequence id="24" parent="12" name="crossword_id_seq">
+      <ObjectId>16586</ObjectId>
+      <StateNumber>3983</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="18" parent="11" name="cell_id_seq">
+    <sequence id="25" parent="12" name="cell_id_seq">
       <ObjectId>16560</ObjectId>
       <StateNumber>3929</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
@@ -94,15 +121,7 @@
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <sequence id="19" parent="11" name="crossword_id_seq">
-      <ObjectId>16569</ObjectId>
-      <StateNumber>3931</StateNumber>
-      <SequenceIdentity>1..2147483647</SequenceIdentity>
-      <BelongsToColumn>1</BelongsToColumn>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
-    </sequence>
-    <sequence id="20" parent="11" name="user_roles_id_seq">
+    <sequence id="26" parent="12" name="user_roles_id_seq">
       <ObjectId>16554</ObjectId>
       <StateNumber>3916</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
@@ -110,137 +129,332 @@
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <table id="21" parent="11" name="cell">
+    <sequence id="27" parent="12" name="users_id_seq">
+      <ObjectId>16576</ObjectId>
+      <StateNumber>3950</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <table id="28" parent="12" name="cell">
       <ObjectId>16562</ObjectId>
       <StateNumber>3929</StateNumber>
     </table>
-    <table id="22" parent="11" name="crossword">
-      <ObjectId>16571</ObjectId>
-      <StateNumber>3931</StateNumber>
+    <table id="29" parent="12" name="crossword">
+      <ObjectId>16588</ObjectId>
+      <StateNumber>3983</StateNumber>
     </table>
-    <table id="23" parent="11" name="user_roles">
+    <table id="30" parent="12" name="user_roles">
       <ObjectId>16556</ObjectId>
       <StateNumber>3916</StateNumber>
     </table>
-    <table id="24" parent="11" name="users">
+    <table id="31" parent="12" name="users">
       <ObjectId>16578</ObjectId>
       <StateNumber>3950</StateNumber>
     </table>
-    <column id="25" parent="21" name="id">
+    <sequence id="32" parent="18" name="ratings_id_seq">
+      <ObjectId>16672</ObjectId>
+      <StateNumber>4071</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="33" parent="18" name="restaurants_id_seq">
+      <ObjectId>16656</ObjectId>
+      <StateNumber>4063</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="34" parent="18" name="user_roles_id_seq">
+      <ObjectId>16593</ObjectId>
+      <StateNumber>4002</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="35" parent="18" name="users_id_seq">
+      <ObjectId>16599</ObjectId>
+      <StateNumber>4003</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <table id="36" parent="18" name="ratings">
+      <ObjectId>16674</ObjectId>
+      <StateNumber>4071</StateNumber>
+    </table>
+    <table id="37" parent="18" name="restaurants">
+      <ObjectId>16658</ObjectId>
+      <StateNumber>4063</StateNumber>
+    </table>
+    <table id="38" parent="18" name="user_roles">
+      <ObjectId>16595</ObjectId>
+      <StateNumber>4002</StateNumber>
+    </table>
+    <table id="39" parent="18" name="users">
+      <ObjectId>16601</ObjectId>
+      <StateNumber>4003</StateNumber>
+    </table>
+    <column id="40" parent="28" name="id">
       <Position>1</Position>
-      <DataType>integer|0</DataType>
+      <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3929</StateNumber>
       <DefaultExpression>nextval(&apos;cell_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
       <SequenceName>cell_id_seq</SequenceName>
     </column>
-    <column id="26" parent="21" name="letter">
+    <column id="41" parent="28" name="letter">
       <Position>2</Position>
-      <DataType>text|0</DataType>
+      <DataType>text|0s</DataType>
       <StateNumber>3929</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="27" parent="21" name="arrow">
+    <column id="42" parent="28" name="arrow">
       <Position>3</Position>
-      <DataType>integer|0</DataType>
+      <DataType>integer|0s</DataType>
       <StateNumber>3929</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="28" parent="21" name="question">
+    <column id="43" parent="28" name="question">
       <Position>4</Position>
-      <DataType>text|0</DataType>
+      <DataType>text|0s</DataType>
       <StateNumber>3929</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="29" parent="22" name="id">
+    <column id="44" parent="29" name="id">
       <Position>1</Position>
-      <DataType>integer|0</DataType>
+      <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>3931</StateNumber>
+      <StateNumber>3983</StateNumber>
       <DefaultExpression>nextval(&apos;crossword_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
       <SequenceName>crossword_id_seq</SequenceName>
     </column>
-    <column id="30" parent="22" name="rows">
+    <column id="45" parent="29" name="rows">
       <Position>2</Position>
-      <DataType>integer|0</DataType>
-      <StateNumber>3931</StateNumber>
+      <DataType>integer|0s</DataType>
+      <StateNumber>3983</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="31" parent="22" name="columns">
+    <column id="46" parent="29" name="columns">
       <Position>3</Position>
-      <DataType>integer|0</DataType>
-      <StateNumber>3931</StateNumber>
+      <DataType>integer|0s</DataType>
+      <StateNumber>3983</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="32" parent="22" name="idbegin">
+    <column id="47" parent="29" name="idbegin">
       <Position>4</Position>
-      <DataType>integer|0</DataType>
-      <StateNumber>3931</StateNumber>
+      <DataType>integer|0s</DataType>
+      <StateNumber>3983</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="33" parent="22" name="idend">
+    <column id="48" parent="29" name="idend">
       <Position>5</Position>
-      <DataType>integer|0</DataType>
-      <StateNumber>3931</StateNumber>
+      <DataType>integer|0s</DataType>
+      <StateNumber>3983</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="34" parent="23" name="id">
+    <column id="49" parent="29" name="created_on">
+      <Position>6</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>3983</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="50" parent="30" name="id">
       <Position>1</Position>
-      <DataType>integer|0</DataType>
+      <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3916</StateNumber>
       <DefaultExpression>nextval(&apos;user_roles_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
       <SequenceName>user_roles_id_seq</SequenceName>
     </column>
-    <column id="35" parent="23" name="login">
+    <column id="51" parent="30" name="login">
       <Position>2</Position>
-      <DataType>varchar(45)|0</DataType>
+      <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3916</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="36" parent="23" name="role">
+    <column id="52" parent="30" name="role">
       <Position>3</Position>
-      <DataType>varchar(45)|0</DataType>
+      <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3916</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="37" parent="24" name="id">
+    <column id="53" parent="31" name="id">
       <Position>1</Position>
-      <DataType>integer|0</DataType>
+      <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3950</StateNumber>
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
       <SequenceName>users_id_seq</SequenceName>
     </column>
-    <column id="38" parent="24" name="login">
+    <column id="54" parent="31" name="login">
       <Position>2</Position>
-      <DataType>text|0</DataType>
+      <DataType>text|0s</DataType>
       <StateNumber>3950</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="39" parent="24" name="email">
+    <column id="55" parent="31" name="email">
       <Position>3</Position>
-      <DataType>text|0</DataType>
+      <DataType>text|0s</DataType>
       <StateNumber>3950</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="40" parent="24" name="password">
+    <column id="56" parent="31" name="password">
       <Position>4</Position>
-      <DataType>text|0</DataType>
+      <DataType>text|0s</DataType>
       <StateNumber>3950</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="41" parent="24" name="enabled">
+    <column id="57" parent="31" name="enabled">
       <Position>5</Position>
-      <DataType>integer|0</DataType>
+      <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3950</StateNumber>
+      <DefaultExpression>1</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="58" parent="36" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4071</StateNumber>
+      <DefaultExpression>nextval(&apos;ratings_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>ratings_id_seq</SequenceName>
+    </column>
+    <column id="59" parent="36" name="user_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>4071</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="60" parent="36" name="restaurant_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>4071</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="61" parent="36" name="rating">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>4071</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="62" parent="36" name="date">
+      <Position>5</Position>
+      <DataType>timestamp|0s</DataType>
+      <StateNumber>4071</StateNumber>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="63" parent="37" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4063</StateNumber>
+      <DefaultExpression>nextval(&apos;restaurants_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>restaurants_id_seq</SequenceName>
+    </column>
+    <column id="64" parent="37" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>4063</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="65" parent="37" name="site">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>4063</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="66" parent="37" name="description">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>4063</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="67" parent="37" name="foto">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>4063</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="68" parent="37" name="enabled">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4063</StateNumber>
+      <DefaultExpression>1</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="69" parent="38" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4002</StateNumber>
+      <DefaultExpression>nextval(&apos;user_roles_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>user_roles_id_seq</SequenceName>
+    </column>
+    <column id="70" parent="38" name="login">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4002</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="71" parent="38" name="role">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4002</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="72" parent="39" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4003</StateNumber>
+      <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>users_id_seq</SequenceName>
+    </column>
+    <column id="73" parent="39" name="login">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>4003</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="74" parent="39" name="email">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>4003</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="75" parent="39" name="password">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+      <StateNumber>4003</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="76" parent="39" name="enabled">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>4003</StateNumber>
       <DefaultExpression>1</DefaultExpression>
       <TypeId>23</TypeId>
     </column>

@@ -21,6 +21,7 @@ import ru.astronarh.service.UserRoleService;
 import ru.astronarh.service.UserService;
 
 import javax.validation.Valid;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,6 +50,11 @@ public class CrosswordController {
     @RequestMapping("/")
     public String indexController() {
         return "index";
+    }
+
+    @RequestMapping("/aboutUser")
+    public String aboutUserController() {
+        return "aboutUser";
     }
 
     @RequestMapping("/about")
@@ -102,6 +108,7 @@ public class CrosswordController {
         int lasId = 0;
         try { lasId = cellService.lastId(); } catch (Exception e) { e.fillInStackTrace(); }
         Crossword crossword = new Crossword(rows, columns, lasId + 1, lasId + (rows * columns));
+        crossword.setCreatedOn(new Timestamp(System.currentTimeMillis()));
         crosswordService.addCrossword(crossword);
         cells.getCells().forEach(x -> cellService.addCell(x));
         return model;
@@ -163,12 +170,12 @@ public class CrosswordController {
         return model;
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String showRegistrationForm(WebRequest request, Model model) {
         UserDTO userDTO = new UserDTO();
         model.addAttribute("user", userDTO);
         return "registration";
-    }
+    }*/
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserDTO userDTO) {
@@ -193,17 +200,17 @@ public class CrosswordController {
                 userRoles.setLogin(userDTO.getLogin());
                 userRoles.setRole("ROLE_USER");
                 userRoleService.addUserRole(userRoles);
-                model.setViewName("/login");
+                model.setViewName("index");
                 model.addObject("message", "The account was created successfully.");
             } else {
                 model.addObject("user", userDTO);
                 model.addObject("message", errorList);
-                model.setViewName("/registration");
+                model.setViewName("index");
             }
         } else {
             model.addObject("user", userDTO);
             model.addObject("message", errorList);
-            model.setViewName("/registration");
+            model.setViewName("index");
         }
         return model;
     }

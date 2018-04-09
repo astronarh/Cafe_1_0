@@ -11,9 +11,9 @@
 
     <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <beans:property name="driverClassName" value="org.postgresql.Driver" />
-        <beans:property name="url" value="jdbc:postgresql://ec2-54-217-245-66.eu-west-1.compute.amazonaws.com:5432/dtndj0m9cgdgk?sslmode=require" />
-        <beans:property name="username" value="okiggjyallqouo" />
-        <beans:property name="password" value="d06f0a1987ce28618b0a6a09f69785a14a54859c646acec26da186fd1e3bfe08" />
+        <beans:property name="url" value="jdbc:postgresql://localhost:5433/cafe" />
+        <beans:property name="username" value="user" />
+        <beans:property name="password" value="31053105" />
     </beans:bean>
 
     <beans:bean name="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
@@ -25,10 +25,10 @@
         <access-denied-handler error-page="/403" />
 
         <form-login
-                login-page="/login"
-                default-target-url="/login"
-                authentication-failure-url="/login?error"
-                username-parameter="login"
+                login-page="/"
+                default-target-url="/"
+                authentication-failure-url="/?error"
+                username-parameter="username"
                 login-processing-url="/j_spring_security_check"
                 password-parameter="password" />
         <logout logout-success-url="/" />

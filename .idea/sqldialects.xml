@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/cell" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/crossword" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/ratings" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/restaurants" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/user_roles" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/users" dialect="PostgreSQL" />
   </component>

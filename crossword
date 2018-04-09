@@ -4,5 +4,6 @@ CREATE TABLE crossword (
   rows INT,
   columns INT,
   idbegin INT,
-  idend INT
+  idend INT,
+  created_on TIMESTAMP
 );
