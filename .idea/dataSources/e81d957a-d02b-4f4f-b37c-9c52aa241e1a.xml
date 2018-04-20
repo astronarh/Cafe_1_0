@@ -85,8 +85,8 @@
     </schema>
     <schema id="18" parent="4" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-04-09.10:34:41.491</IntrospectionTimestamp>
-      <IntrospectionStateNumber>4071</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-04-18.15:04:48.084</IntrospectionTimestamp>
+      <IntrospectionStateNumber>4189</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -154,8 +154,8 @@
       <StateNumber>3950</StateNumber>
     </table>
     <sequence id="32" parent="18" name="ratings_id_seq">
-      <ObjectId>16672</ObjectId>
-      <StateNumber>4071</StateNumber>
+      <ObjectId>16700</ObjectId>
+      <StateNumber>4189</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
@@ -186,8 +186,8 @@
       <DataType>integer</DataType>
     </sequence>
     <table id="36" parent="18" name="ratings">
-      <ObjectId>16674</ObjectId>
-      <StateNumber>4071</StateNumber>
+      <ObjectId>16702</ObjectId>
+      <StateNumber>4189</StateNumber>
     </table>
     <table id="37" parent="18" name="restaurants">
       <ObjectId>16658</ObjectId>
@@ -329,7 +329,7 @@
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>4071</StateNumber>
+      <StateNumber>4189</StateNumber>
       <DefaultExpression>nextval(&apos;ratings_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
       <SequenceName>ratings_id_seq</SequenceName>
@@ -337,25 +337,25 @@
     <column id="59" parent="36" name="user_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>4071</StateNumber>
+      <StateNumber>4189</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="60" parent="36" name="restaurant_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>4071</StateNumber>
+      <StateNumber>4189</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="61" parent="36" name="rating">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>4071</StateNumber>
+      <StateNumber>4189</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="62" parent="36" name="date">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>4071</StateNumber>
+      <StateNumber>4189</StateNumber>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <TypeId>1114</TypeId>
     </column>

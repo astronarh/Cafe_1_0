@@ -51,6 +51,9 @@
                     <p>
                         Login as <security:authentication property="principal.username" />
                         <input id="logout-button" type="submit" value="Logout">
+                        <security:authorize access="hasRole('ROLE_ADMIN')">
+                            <a href="/admin" style="color: white">Admin page</a>
+                        </security:authorize>
                     </p>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </form>
@@ -164,14 +167,9 @@
             <h2>Restaurants</h2>
             <p>Choose catering establishments.</p>
             <ul id="bf_dishes">
-                <li><a href="#"><img src="${pageContext.request.contextPath}/resources/static/images/thumbs/1.jpg" alt="thumb1"/></a></li>
-                <li><a href="#"><img src="${pageContext.request.contextPath}/resources/static/images/thumbs/2.jpg" alt="thumb2"/></a></li>
-                <li><a href="#"><img src="${pageContext.request.contextPath}/resources/static/images/thumbs/3.jpg" alt="thumb3"/></a></li>
-                <li><a href="#"><img src="${pageContext.request.contextPath}/resources/static/images/thumbs/4.jpg" alt="thumb4"/></a></li>
-                <li><a href="#"><img src="${pageContext.request.contextPath}/resources/static/images/thumbs/5.jpg" alt="thumb5"/></a></li>
-                <li><a href="#"><img src="${pageContext.request.contextPath}/resources/static/images/thumbs/6.jpg" alt="thumb6"/></a></li>
-
-                <li><a href="#"><p alt="thumb6">${restaurants.get(0).name}</p></a></li>
+                <c:forEach var="restaurants" items="${restaurants}" varStatus="status">
+                    <li><a href="#"><p alt="thumb${status.index}">${restaurants.name}</p></a></li>
+                </c:forEach>
             </ul>
         </div>
         <div id="bf_gallery" class="bf_gallery">
@@ -181,86 +179,39 @@
                 <a id="bf_next" href="#" class="bf_next"></a>
             </div>
             <div class="bf_gallery_wrapper">
-                <div class="bf_gallery_item">
-                    <div class="bf_heading"><h2>Pizza Rustica</h2></div>
-                    <div class="bf_desc">
-                        <p>Fresh ingredients and authentic flavours</p>
-                    </div>
-                    <img src="${pageContext.request.contextPath}/resources/static/images/foreground/1.jpg" alt="image1" data-bgimg="/resources/static/images/background/1.jpg" />
-                </div>
-                <div class="bf_gallery_item">
-                    <div class="bf_heading"><h2>Pizza Quattro Stagioni</h2></div>
-                    <div class="bf_desc">
-                        <p>Originality meets tradition</p>
-                    </div>
-                    <img src="${pageContext.request.contextPath}/resources/static/images/foreground/2.jpg" alt="image1" data-bgimg="/resources/static/images/background/2.jpg" />
-                </div>
-                <div class="bf_gallery_item">
-                    <div class="bf_heading"><h2>Rucolini</h2></div>
-                    <div class="bf_desc">
-                        <p>Dive into the balance of taste</p>
-                    </div>
-                    <img src="${pageContext.request.contextPath}/resources/static/images/foreground/3.jpg" alt="image1" data-bgimg="/resources/static/images/background/3.jpg" />
-                </div>
-                <div class="bf_gallery_item">
-                    <div class="bf_heading"><h2>Salsicce Boscaiola</h2></div>
-                    <div class="bf_desc">
-                        <p>The right intensity</p>
-                    </div>
-                    <img src="${pageContext.request.contextPath}/resources/static/images/foreground/4.jpg" alt="image1" data-bgimg="/resources/static/images/background/4.jpg" />
-                </div>
-                <div class="bf_gallery_item">
-                    <div class="bf_heading"><h2>Tortelloni Alla Zucca</h2></div>
-                    <div class="bf_desc">
-                        <p>Incredibly tasty perfection</p>
-                    </div>
-                    <img src="${pageContext.request.contextPath}/resources/static/images/foreground/5.jpg" alt="image1" data-bgimg="/resources/static/images/background/5.jpg" />
-                </div>
-                <div class="bf_gallery_item">
-                    <div class="bf_heading"><h2>Calamaretti Fritti</h2></div>
-                    <div class="bf_desc">
-                        <p>Combine chunky and soft</p>
-                    </div>
-                    <img src="${pageContext.request.contextPath}/resources/static/images/foreground/6.jpg" alt="image1" data-bgimg="/resources/static/images/background/6.jpg" />
-                </div>
-
-                <div class="bf_gallery_item">
-                    <div class="bf_heading"><h2><c:out value="${restaurants.get(0).name}" /></h2></div>
-                    <div class="bf_desc">
-                        <p><c:out value="${restaurants.get(0).description.substring(0, 27)}" />...</p>
-                    </div>
-
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-
-                    <form id="new-rating">
-                        <input type="hidden" name="userId" id="userId" value="1">
-                        <input type="hidden" name="restaurantId" id="restaurantId" value="1">
-
-                        <div id="reviewStars-input">
-                            <input id="star-4" type="radio" name="rating" value="5"/>
-                            <label title="gorgeous" for="star-4"></label>
-
-                            <input id="star-3" type="radio" name="rating" value="4"/>
-                            <label title="good" for="star-3"></label>
-
-                            <input id="star-2" type="radio" name="rating" value="3"/>
-                            <label title="regular" for="star-2"></label>
-
-                            <input id="star-1" type="radio" name="rating" value="2"/>
-                            <label title="poor" for="star-1"></label>
-
-                            <input id="star-0" type="radio" name="rating" value="1"/>
-                            <label title="bad" for="star-0"></label>
+                <c:forEach var="restaurants" items="${restaurants}" varStatus="status">
+                    <div class="bf_gallery_item">
+                        <div class="bf_heading"><h2><c:out value="${restaurants.name}" /></h2></div>
+                        <div class="bf_desc">
+                            <p><c:out value="${restaurants.description.length() > 27 ? restaurants.description.substring(0, 27) : restaurants.description}" />...</p>
                         </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
 
-                    </form>
+                        <form id="new-rating${status.index}">
+                            <div id="reviewStars-input">
+                                <input id="star-4${status.index}" type="radio" name="rating" value="5" onclick="sendRating(${restaurants.id}, 5)"/>
+                                <label title="gorgeous" for="star-4${status.index}"></label>
 
-                    <img src="${restaurants.get(0).foto}" alt="image1" data-bgimg="${restaurants.get(0).foto}" />
-                </div>
+                                <input id="star-3${status.index}" type="radio" name="rating" value="4" onclick="sendRating(${restaurants.id}, 4)"/>
+                                <label title="good" for="star-3${status.index}"></label>
+
+                                <input id="star-2${status.index}" type="radio" name="rating" value="3" onclick="sendRating(${restaurants.id}, 3)"/>
+                                <label title="regular" for="star-2${status.index}"></label>
+
+                                <input id="star-1${status.index}" type="radio" name="rating" value="2" onclick="sendRating(${restaurants.id}, 2)"/>
+                                <label title="poor" for="star-1${status.index}"></label>
+
+                                <input id="star-0${status.index}" type="radio" name="rating" value="1" onclick="sendRating(${restaurants.id}, 1)"/>
+                                <label title="bad" for="star-0${status.index}"></label>
+                            </div>
+                            <img src="${restaurants.foto}" alt="image1${status.index}" data-bgimg="${restaurants.foto}" />
+                        </form>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>
@@ -313,10 +264,8 @@
     }
 
     $(document).ready(function() {
-
         $('#star-0').click(function (event) {
-            setStar();
-
+            //setStar();
             $.get('rating', {
                 userId : $('#userId').val(),
                 restaurantId : $('#restaurantId').val(),
@@ -325,9 +274,16 @@
                 $('#msg-box').text('Rating set ' + 0);
             });
         })
-
     });
 
+    function sendRating(restaurantId, rating) {
+        $.get('rating', {
+            restaurantId : restaurantId,
+            rating : rating
+        }, function (responseText) {
+            $('#msg-box').text('Rating set ' + rating);
+        });
+    }
 </script>
 </body>
 </html>

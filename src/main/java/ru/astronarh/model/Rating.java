@@ -1,6 +1,7 @@
 package ru.astronarh.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Entity
