@@ -40,4 +40,9 @@ public class UserDAO {
         User user = (User) session.load(User.class, new Integer(id));
         if (null != user) session.delete(user);
     }
+
+    public void changeUser(User user) {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.saveOrUpdate(user);
+    }
 }

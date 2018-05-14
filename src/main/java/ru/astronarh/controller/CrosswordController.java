@@ -67,11 +67,6 @@ public class CrosswordController {
         return "login";
     }
 
-    /*@RequestMapping("/registration")
-    public String registrationPage() {
-        return "registration";
-    }*/
-
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView loginController(@ModelAttribute(value = "user")String user, @ModelAttribute(value = "login")String login) {
         ModelAndView model = new ModelAndView();
@@ -169,13 +164,6 @@ public class CrosswordController {
         crosswordService.deleteCrossword(id);
         return model;
     }
-
-    /*@RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String showRegistrationForm(WebRequest request, Model model) {
-        UserDTO userDTO = new UserDTO();
-        model.addAttribute("user", userDTO);
-        return "registration";
-    }*/
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserDTO userDTO) {

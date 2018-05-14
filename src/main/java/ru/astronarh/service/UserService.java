@@ -33,4 +33,9 @@ public class UserService {
     public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }
+
+    @Transactional
+    public void changeUser(User user) {
+        userDao.changeUser(user);
+    }
 }

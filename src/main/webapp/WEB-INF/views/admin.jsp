@@ -13,10 +13,22 @@
 <html>
 <head>
     <title>Admin</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="<c:url value="/resources/static/css/admin.css" />" rel="stylesheet">
 </head>
 <body>
+<div id="user" align="center">
+    <div class="main">
+        <div class="main_in_main">
+            <div class="content">
+                <div style="border-width: thin; width: 100%; position: absolute; top: 0px; left: 0px; text-align: right;">
+                    <img src="/resources/static/images/close_red.png" width=30 height=30>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="container" align="center">
     <div class="main">
         <div class="main_in_main">
@@ -24,8 +36,11 @@
                 <security:authorize access="hasRole('ROLE_ADMIN')">
                     <h1 align="center">Administration page</h1>
                     <input type='button' value='Main page' class="flat" onclick="location.href='/';">
-                    <input type='button' id='hideshow' value='Add new restaurant' class="flat">
-                    <input type='button' id='hideshow-ratings' value='Show ratings' class="flat">
+                    <input type='button' id='add-new-restaurant' value='Add new restaurant' class="flat">
+                    <input type='button' id='show-ratings' value='Show ratings' class="flat">
+                    <input type='button' id='show-restaurants' value='Show restaurants' class="flat">
+                    <input type='button' id='show-users' value='Show users' class="flat">
+
                     <div id="new_restaurant" style="display: none; background-color: #eeeeee">
                         <form action="${pageContext.request.contextPath}/restaurant" th:object="${restaurant}" method='POST' >
                             <table>
@@ -97,7 +112,7 @@
                             <c:forEach var="ratings" items="${ratings}" varStatus="status">
                                 <tr>
                                     <td><c:out value="${ratings.id}" /></td>
-                                    <td><a href="#" onclick="seeInfoUser(${ratings.userID})"><c:out value="${ratings.userID}" /></a></td>
+                                    <td><a href="#" onclick="userInfo(${ratings.userID})"><c:out value="${ratings.userID}" /></a></td>
                                     <td><c:out value="${ratings.restaurantId}"/></td>
                                     <td><c:out value="${ratings.rating}" /></td>
                                     <td><c:out value="${ratings.date}" /></td>
@@ -106,7 +121,6 @@
                             </c:forEach>
                         </table>
                     </div>
-
                     <div id="restaurants">
                         <table class="restaurants">
                             <caption>Restaurants</caption>
@@ -171,6 +185,54 @@
                             </c:forEach>
                         </table>
                     </div>
+                    <div id="users" style="display: none; background-color: #eeeeee">
+                        <table class="restaurants">
+                            <caption>Users</caption>
+                            <tr>
+                                <td width="50px">
+                                    id
+                                </td>
+                                <td>
+                                   login
+                                </td>
+                                <td width="200px">
+                                    email
+                                </td>
+                                <td>
+                                    enabled
+                                </td>
+                                <td>
+                                    role_admin
+                                </td>
+                                <td>
+                                    edit
+                                </td>
+                            </tr>
+                            <c:forEach var="user" items="${users}" varStatus="status">
+                                <tr>
+                                    <td>
+                                        <c:out value="${user.id}" />
+                                    </td>
+                                    <td>
+                                        <c:out value="${user.login}" />
+                                    </td>
+                                    <td>
+                                        <c:out value="${user.email}" />
+                                    </td>
+                                    <td>
+                                        <label style="color: green;"><c:if test="${user.enabled == 1}">enabled</c:if></label>
+                                        <label style="color: red;"><c:if test="${user.enabled == 0}">disabled</c:if></label>
+                                    </td>
+                                    <td>
+                                        role_admin
+                                    </td>
+                                    <td>
+                                        <a href="#" onclick="userInfo(${user.id})">edit</a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </div>
 
                 </security:authorize>
                 <security:authorize access="isAnonymous()">
@@ -201,11 +263,44 @@
             if (value === 'Show ratings') $('#hideshow-ratings').val('Show restaurants')
             else $('#hideshow-ratings').val('Show ratings');
         })
+
+        $('#show-users').click(function () {
+            $('#users').show();
+            $('#ratings').hide();
+            $('#restaurants').hide();
+            $('#new_restaurant').hide();
+        })
+        $('#add-new-restaurant').click(function () {
+            $('#users').hide();
+            $('#ratings').hide();
+            $('#restaurants').hide();
+            $('#new_restaurant').show();
+        })
+        $('#show-ratings').click(function () {
+            $('#users').hide();
+            $('#ratings').show();
+            $('#restaurants').hide();
+            $('#new_restaurant').hide();
+        })
+        $('#show-restaurants').click(function () {
+            $('#users').hide();
+            $('#ratings').hide();
+            $('#restaurants').show();
+            $('#new_restaurant').hide();
+        })
+
     });
-    function seeInfoUser(userId) {
-        $.get('user/' + userId,
-            function (result) {
-            alert(result);
+
+    function userInfo(id) {
+        $.get('user/' + id, {
+        }, function (responseText) {
+            $('#user').html(responseText);
+            $('#user').toggle('hide');
         });
     }
+
+    function closeUserInfo() {
+        $('#user').toggle('hide');
+    }
+
 </script>

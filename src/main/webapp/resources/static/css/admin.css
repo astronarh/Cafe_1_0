@@ -76,3 +76,18 @@ body {
     padding-top:0px;
     height:200px;
 }
+
+#user {
+    width:800px; /*Ширина блока*/
+    height:600px; /*Высота блока*/
+    margin:0 auto;
+    overflow:visible;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-400px; /*Смещаем блок на половину всей ширины влево*/
+    margin-top:-400px; /*Смещаем блок на половину высоты вверх*/
+    background:#ffffff;
+    z-index: 100000;
+    display: none;
+}

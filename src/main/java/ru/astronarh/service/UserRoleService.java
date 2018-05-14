@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.astronarh.dao.UserRoleDAO;
 import ru.astronarh.model.UserRoles;
 
+import java.util.List;
+
 @Service("userRoleService")
 public class UserRoleService {
 
@@ -25,5 +27,20 @@ public class UserRoleService {
     @Transactional
     public boolean deleteUserRole(int id) {
         return false;
+    }
+
+    @Transactional
+    public List<UserRoles> userRoles(String login) {
+        return userRoleDAO.userRoles(login);
+    }
+
+    @Transactional
+    public boolean isAdmin(String login) {
+        return userRoleDAO.isAdmin(login);
+    }
+
+    @Transactional
+    public void deleteAdminUserRole(String login) {
+        userRoleDAO.deleteAdminUserRole(login);
     }
 }

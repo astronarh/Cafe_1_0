@@ -3,14 +3,17 @@ package ru.astronarh.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.astronarh.model.Rating;
 import ru.astronarh.model.Restaurant;
 import ru.astronarh.model.User;
+import ru.astronarh.model.UserRoles;
 import ru.astronarh.service.RatingService;
 import ru.astronarh.service.RestaurantService;
+import ru.astronarh.service.UserRoleService;
 import ru.astronarh.service.UserService;
 
 import java.io.UnsupportedEncodingException;
@@ -31,6 +34,9 @@ public class RestaurantController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    UserRoleService userRoleService;
+
     @RequestMapping("/admin")
     public ModelAndView adminPage() {
         ModelAndView model = new ModelAndView();
@@ -39,6 +45,8 @@ public class RestaurantController {
         model.addObject("restaurants", restaurants);
         List<Rating> ratings = ratingService.list();
         model.addObject("ratings", ratings);
+        List<User> users = userService.getAllUsers();
+        model.addObject("users", users);
         return model;
     }
 
@@ -151,10 +159,13 @@ public class RestaurantController {
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-    public ModelAndView getUser(@PathVariable int id) {
+    public ModelAndView user(@PathVariable int id) {
         ModelAndView model = new ModelAndView();
-        model.addObject("user", "1");
-        //model.setViewName("/admin");
+        model.setViewName("user");
+        User user = userService.getUser(id);
+        model.addObject("user", user);
+        model.addObject("admin", userRoleService.isAdmin(user.getLogin()));
         return model;
     }
+
 }

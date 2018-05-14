@@ -1,23 +1,23 @@
 package ru.astronarh.dto;
 
-import ru.astronarh.model.User;
-
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class UserDTO{
-    @NotNull
-    @NotEmpty
+
+    private int id;
+
+    @NotEmpty(message="Enter login.")
     private String login;
 
-    @NotNull
-    @NotEmpty
+    @Email(message="Enter a valid email.")
+    @NotEmpty(message="Enter email.")
     private String email;
 
-    @NotNull
-    @NotEmpty
     private String password;
     private String matchingPassword;
+    private boolean enabled;
+    private boolean admin;
 
     public String getLogin() {
         return login;
@@ -51,13 +51,40 @@ public class UserDTO{
         this.matchingPassword = matchingPassword;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
-                "login='" + login + '\'' +
+                "id=" + id +
+                ", login='" + login + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", matchingPassword='" + matchingPassword + '\'' +
+                ", enabled=" + enabled +
+                ", admin=" + admin +
                 '}';
     }
 }
