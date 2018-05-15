@@ -12,10 +12,10 @@
     <meta name="keywords" content="jquery, gallery, /resources/static/images, css3, html5, photography, website, template, google maps, sliding, background"/>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/favicon.png" type="image/png"/>
     <link href="<c:url value="/resources/static/css/style.css" />" rel="stylesheet">
-    <link href="<c:url value="http://fonts.googleapis.com/css?family=PT+Sans+Narrow" />" rel="stylesheet" type="text/css" />
-    <link href="<c:url value="http://fonts.googleapis.com/css?family=Terminal+Dosis+Light" />" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" />"></script>
-    <script src="<c:url value="http://maps.google.com/maps/api/js?sensor=true" />" type="text/javascript"></script>
+    <link href="<c:url value="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" />" rel="stylesheet" type="text/css" />
+    <link href="<c:url value="https://fonts.googleapis.com/css?family=Terminal+Dosis+Light" />" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" />"></script>
+    <script src="<c:url value="https://maps.google.com/maps/api/js?sensor=true" />" type="text/javascript"></script>
 </head>
 <body>
 
