@@ -16,7 +16,6 @@
     <link href="<c:url value="http://fonts.googleapis.com/css?family=Terminal+Dosis+Light" />" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" />"></script>
     <script src="<c:url value="http://maps.google.com/maps/api/js?sensor=true" />" type="text/javascript"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 
