@@ -22,7 +22,7 @@ public class RestaurantDao {
     }
 
     public Restaurant get(int id) {
-        return sessionFactory.getCurrentSession().get(Restaurant.class, id);
+        return (Restaurant) sessionFactory.getCurrentSession().get(Restaurant.class, id);
     }
 
     public List<Restaurant> list() {
@@ -38,7 +38,7 @@ public class RestaurantDao {
 
     public void update(int id, Restaurant restaurant) {
         Session session = sessionFactory.getCurrentSession();
-        Restaurant restaurant2 = session.byId(Restaurant.class).load(id);
+        Restaurant restaurant2 = (Restaurant) session.byId(Restaurant.class).load(id);
         restaurant2.setName(restaurant.getName());
         restaurant2.setSite(restaurant.getSite());
         restaurant2.setDescription(restaurant.getDescription());
@@ -49,7 +49,7 @@ public class RestaurantDao {
 
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Restaurant restaurant = session.byId(Restaurant.class).load(id);
+        Restaurant restaurant = (Restaurant) session.byId(Restaurant.class).load(id);
         session.delete(restaurant);
     }
 }

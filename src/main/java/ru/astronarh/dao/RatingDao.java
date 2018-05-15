@@ -20,7 +20,7 @@ public class RatingDao {
     }
 
     public Rating get(int id) {
-        return sessionFactory.getCurrentSession().get(Rating.class, id);
+        return (Rating)sessionFactory.getCurrentSession().get(Rating.class, id);
     }
 
     public List<Rating> list() {
@@ -30,7 +30,7 @@ public class RatingDao {
 
     public void update(int id, Rating rating) {
         Session session = sessionFactory.getCurrentSession();
-        Rating rating2 = session.byId(Rating.class).load(id);
+        Rating rating2 = (Rating)session.byId(Rating.class).load(id);
         rating2.setRestaurantId(rating.getRestaurantId());
         rating2.setRating(rating.getRating());
         session.flush();
@@ -38,7 +38,7 @@ public class RatingDao {
 
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Rating rating = session.byId(Rating.class).load(id);
+        Rating rating = (Rating)session.byId(Rating.class).load(id);
         session.delete(rating);
     }
 }
