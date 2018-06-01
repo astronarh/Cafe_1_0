@@ -42,6 +42,9 @@
                     <input type='button' id='show-users' value='Show users' class="flat">
 
                     <div id="new_restaurant" style="display: none; background-color: #eeeeee">
+
+                        <a href="/restaurant">NEW</a>
+
                         <form action="${pageContext.request.contextPath}/restaurant" th:object="${restaurant}" method='POST' >
                             <table>
                                 <caption>New restaurant</caption>

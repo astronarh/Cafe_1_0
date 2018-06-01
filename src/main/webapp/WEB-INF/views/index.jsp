@@ -2,11 +2,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
 <head>
-    <title>Restaurant Website and Gallery Template with jQuery and Google Maps</title>
+    <title><spring:message code="index.title" /></title>
     <meta charset=utf-8>
     <meta name="description" content="Restaurant Website and Gallery Template with jQuery and Google Maps" />
     <meta name="keywords" content="jquery, gallery, /resources/static/images, css3, html5, photography, website, template, google maps, sliding, background"/>
@@ -40,7 +41,7 @@
     <div class="bf_page" id="home" style="display:block;">
         <div class="bf_content_text">
             <h2>Welcome</h2>
-            <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+            <p>We welcome you on our website, here you can appreciate the taste and not only the taste of the dishes you eat, thereby helping in choosing potential eaters!</p>
         </div>
     </div>
     <div class="bf_page" id="login">
@@ -52,7 +53,7 @@
                         Login as <security:authentication property="principal.username" />
                         <input id="logout-button" type="submit" value="Logout">
                         <security:authorize access="hasRole('ROLE_ADMIN')">
-                            <a href="/admin" style="color: white">Admin page</a>
+                            <a href="/adminAPI" style="color: white">Admin page</a>
                         </security:authorize>
                     </p>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -158,8 +159,8 @@
     <div class="bf_page" id="about">
         <div class="bf_content_text">
             <h2>About us</h2>
-            <p>It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+            <p>We are young, but purposeful!</p>
+            <p>Very Purposeful!</p>
         </div>
     </div>
     <div class="bf_page" id="menu">

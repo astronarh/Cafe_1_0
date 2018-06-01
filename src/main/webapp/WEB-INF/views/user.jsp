@@ -43,7 +43,7 @@
         <div class="clearfix">
             <button type="button" class="cancelbtn" onclick="closeUserInfo()">Cancel</button>
             <button type="submit" class="signupbtn">Change</button>
-            <<!--<button type="button" class="cancelbtn" id="change">ChangeAJAX</button>-->
+            <!--<button type="button" class="cancelbtn" id="change">ChangeAJAX</button>-->
         </div>
     </div>
     <script>

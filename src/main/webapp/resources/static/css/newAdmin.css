@@ -1,0 +1,35 @@
+.usersDataTable {
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.restaurant {
+    width: 100%;
+}
+.restaurant td {
+    width: 100%;
+    padding: 10px;
+}
+.restaurant input[type=text], .restaurant textarea {
+    width: 500px;
+    height: 50px;
+}
+
+.submit {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    background-color: chartreuse;
+    width: 400px;
+    height: 100px;
+    font-size: large;
+}
+.submit:hover {
+    background-color: #4CAF50;
+}
+
+.error {
+    color: red;
+    font-size: small;
+}

@@ -1,29 +1,37 @@
 package ru.astronarh.controller;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ModelAndView;
+import ru.astronarh.dto.RestaurantDTO;
 import ru.astronarh.model.Rating;
 import ru.astronarh.model.Restaurant;
 import ru.astronarh.model.User;
-import ru.astronarh.model.UserRoles;
 import ru.astronarh.service.RatingService;
 import ru.astronarh.service.RestaurantService;
 import ru.astronarh.service.UserRoleService;
 import ru.astronarh.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
-@Controller
+@RestController
 public class RestaurantController {
+
+    //private static Log log = LogFactory.getLog(RestaurantController.class);
 
     @Autowired
     RestaurantService restaurantService;
@@ -81,10 +89,17 @@ public class RestaurantController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView main(){
+    public ModelAndView main(Locale locale){
         ModelAndView model = new ModelAndView();
         model.addObject("restaurants", restaurantService.list());
         model.setViewName("/index");
+
+        /*String username;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) username = ((UserDetails)principal).getUsername();
+        else username = principal.toString();
+        log.info("load " + model.getViewName() + " [" + username + "]");*/
+
         return model;
     }
 
@@ -166,6 +181,31 @@ public class RestaurantController {
         model.addObject("user", user);
         model.addObject("admin", userRoleService.isAdmin(user.getLogin()));
         return model;
+    }
+
+    @RequestMapping(value = "/restaurant", method = RequestMethod.GET, headers = "Accept=application/json")
+    public ModelAndView restaurant() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("restaurant");
+        model.addObject("restaurant", new RestaurantDTO());
+        return model;
+    }
+
+    @RequestMapping(value = "/restaurant/{id}", method = RequestMethod.POST, headers = "Accept=application/json")
+    @ResponseBody
+    public RestaurantDTO editRestaurantPOST(@PathVariable int id, RestaurantDTO restaurantDTO) {
+        System.out.println(restaurantDTO);
+        ModelAndView model = new ModelAndView();
+        model.setViewName("restaurant");
+        Restaurant restaurant = restaurantService.get(id);
+        model.addObject("restaurant", restaurant);
+        restaurantDTO.setId(restaurant.getId());
+        restaurantDTO.setName(restaurant.getName());
+        restaurantDTO.setSite(restaurant.getSite());
+        restaurantDTO.setDescription(restaurant.getDescription());
+        restaurantDTO.setFoto(restaurant.getFoto());
+        restaurantDTO.setEnabled(restaurant.getEnabled() == 1);
+        return restaurantDTO;
     }
 
 }
